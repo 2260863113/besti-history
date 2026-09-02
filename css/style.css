@@ -289,11 +289,6 @@ a { color: var(--red); }
 .gb-item .name { font-weight: 700; color: var(--red-dark); }
 .gb-item .time { font-size: 0.8rem; color: var(--ink-light); }
 .gb-item .content { margin-top: 6px; font-size: 0.95rem; white-space: pre-wrap; word-break: break-word; }
-.gb-item .del-btn {
-  border: none; background: none; color: var(--ink-light); cursor: pointer; font-size: 0.8rem;
-  text-decoration: underline; font-family: inherit;
-}
-.gb-item .del-btn:hover { color: var(--err); }
 .gb-empty { text-align: center; color: var(--ink-light); padding: 26px 0; font-size: 0.92rem; }
 
 /* ---------- 响应式适配 ---------- */

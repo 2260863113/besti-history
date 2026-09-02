@@ -1,0 +1,11 @@
+# wrangler pages 上传时的排除清单（gitignore 风格）
+# 只影响"作为静态资源上传"的部分；functions/ 由 Pages 自动识别并编译
+.dev.vars
+.wrangler/
+.git/
+node_modules/
+*.log
+schema.sql
+wrangler.toml
+.assetsignore
+.gitignore

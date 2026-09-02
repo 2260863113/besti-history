@@ -25,7 +25,7 @@
   <main>
     <h1 class="section-title" style="margin-top:0">留言板</h1>
     <p style="text-align:center;color:var(--ink-light);font-size:0.95rem;margin-bottom:26px">
-      留言保存在你的浏览器本地（localStorage），仅自己可见 · 刷新页面不会丢失
+      留言保存在云端，所有访客共同可见 · 请文明发言
     </p>
 
     <!-- 左侧表单 + 右侧留言列表（移动端自动改为上下布局） -->
@@ -48,6 +48,7 @@
       <!-- 留言列表（倒序） -->
       <div class="gb-list-card">
         <h3>留言列表</h3>
+        <div id="gb-status" style="text-align:center;color:var(--ink-light);font-size:0.9rem;padding:8px 0"></div>
         <div id="gb-list"></div>
       </div>
 

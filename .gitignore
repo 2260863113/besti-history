@@ -1,0 +1,5 @@
+# 本地敏感文件不入库
+.dev.vars
+.wrangler/
+node_modules/
+*.log

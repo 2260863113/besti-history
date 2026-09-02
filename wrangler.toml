@@ -1,0 +1,12 @@
+name = "besti-history"
+compatibility_date = "2026-08-30"
+
+# 纯静态站无构建步骤：仓库根目录即静态资源目录
+pages_build_output_dir = "."
+
+# 云端共享留言板数据库（SQLite / D1）
+[[d1_databases]]
+binding = "DB"
+database_name = "besti-history-db"
+database_id = "32d4e5a6-6955-458b-a2de-5a118e5f32cc"
+preview_database_id = "32d4e5a6-6955-458b-a2de-5a118e5f32cc"
