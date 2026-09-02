@@ -1,0 +1,307 @@
+/* ==========================================================================
+   我国密码史主题展示网站 —— 全站样式表
+   主题：中国红 + 金色 + 米白背景，庄重、略带复古感的红色主旋律风格
+   ========================================================================== */
+
+/* ---------- CSS 变量：统一管理主题色，方便后续调整 ---------- */
+:root {
+  --red: #C41A1A;          /* 中国红（主色） */
+  --red-dark: #8E1111;     /* 深红（悬停/渐变） */
+  --gold: #D4AF37;         /* 金色（点缀） */
+  --gold-light: #F3E3B3;   /* 浅金（分隔线/边框） */
+  --bg: #F7F3EA;           /* 米白背景（旧纸张感） */
+  --paper: #FFFDF6;        /* 卡片纸色 */
+  --ink: #3A2E2A;          /* 正文墨色 */
+  --ink-light: #7A6A60;    /* 次要文字 */
+  --ok: #2E7D32;           /* 答对：绿 */
+  --err: #B71C1C;          /* 答错：红 */
+  --shadow: 0 4px 14px rgba(62, 30, 20, 0.12);
+  --radius: 12px;
+}
+
+/* ---------- 基础重置 ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+  background-color: var(--bg);
+  /* 细微纸纹：用两层渐变模拟旧纸的颗粒感，体积近乎为零 */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(180, 140, 90, 0.035) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at top, rgba(212, 175, 55, 0.08), transparent 60%);
+  color: var(--ink);
+  line-height: 1.75;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; width: 100%; max-width: 1080px; margin: 0 auto; padding: 96px 20px 40px; }
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--red); }
+
+/* ---------- 顶部固定导航栏 ---------- */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: linear-gradient(135deg, var(--red-dark), var(--red));
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 2px 10px rgba(90, 10, 10, 0.35);
+}
+.nav-inner {
+  max-width: 1080px; margin: 0 auto; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+}
+.brand {
+  color: var(--gold-light); font-weight: 700; font-size: 1.05rem;
+  padding: 12px 0; text-decoration: none; letter-spacing: 2px;
+}
+.brand .star { color: var(--gold); margin-right: 6px; }
+.main-nav { display: flex; flex-wrap: wrap; }
+.main-nav a {
+  display: block; padding: 14px 18px; text-decoration: none;
+  color: rgba(255, 245, 220, 0.85); font-size: 0.98rem; letter-spacing: 1px;
+  border-bottom: 3px solid transparent; transition: all 0.2s;
+}
+.main-nav a:hover { color: #fff; background: rgba(0, 0, 0, 0.12); }
+/* 当前页导航高亮（由 main.js 根据页面自动添加 .active） */
+.main-nav a.active {
+  color: #fff; font-weight: 700;
+  border-bottom-color: var(--gold); background: rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+  margin-top: 48px; background: var(--red-dark); color: rgba(255, 240, 210, 0.85);
+  border-top: 3px solid var(--gold); text-align: center; padding: 22px 16px; font-size: 0.88rem;
+}
+.site-footer .gold { color: var(--gold); }
+
+/* ---------- 首页 Hero 横幅 ---------- */
+.hero {
+  position: relative; overflow: hidden; text-align: center;
+  background: linear-gradient(160deg, #7E0E0E 0%, var(--red) 55%, #A31717 100%);
+  border-radius: var(--radius); padding: 72px 24px 64px;
+  box-shadow: var(--shadow); color: #FFF6E3;
+}
+/* 装饰性摩斯电码（伪元素内容为点划组合，纯 CSS 实现） */
+.hero::before, .hero::after {
+  content: "· — · ·   — — —   · · —   · — · ·   — · ·   · · ·";
+  position: absolute; left: 0; right: 0; font-size: 1.15rem; letter-spacing: 6px;
+  color: rgba(212, 175, 55, 0.35); white-space: nowrap; overflow: hidden;
+}
+.hero::before { top: 20px; }
+.hero::after { bottom: 20px; }
+.hero h1 { font-size: clamp(1.7rem, 5vw, 2.8rem); letter-spacing: 4px; margin-bottom: 14px; }
+.hero .subtitle { font-size: clamp(0.95rem, 2.5vw, 1.15rem); color: var(--gold-light); letter-spacing: 2px; }
+.hero .divider {
+  width: 120px; height: 3px; margin: 22px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hero p.desc { max-width: 640px; margin: 0 auto; font-size: 0.98rem; color: rgba(255, 246, 227, 0.92); }
+
+/* ---------- 板块通用标题 ---------- */
+.section-title {
+  display: flex; align-items: center; gap: 14px;
+  margin: 44px 0 20px; font-size: 1.35rem; color: var(--red-dark); letter-spacing: 2px;
+}
+.section-title::before, .section-title::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-light));
+}
+.section-title::after { background: linear-gradient(90deg, var(--gold-light), transparent); }
+
+/* ---------- 首页快捷入口卡片（Grid，响应式） ---------- */
+.entry-grid {
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.entry-card {
+  background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow);
+  border-top: 4px solid var(--red); padding: 26px 20px; text-decoration: none;
+  color: var(--ink); text-align: center; transition: transform 0.2s, box-shadow 0.2s;
+}
+.entry-card:hover { transform: translateY(-5px); box-shadow: 0 10px 22px rgba(62, 30, 20, 0.2); }
+.entry-card .icon { font-size: 2.2rem; margin-bottom: 10px; }
+.entry-card h3 { color: var(--red-dark); margin-bottom: 8px; letter-spacing: 2px; }
+.entry-card p { font-size: 0.88rem; color: var(--ink-light); }
+
+/* ---------- 首页名言横幅 ---------- */
+.quote-banner {
+  margin-top: 44px; text-align: center; background: var(--paper);
+  border-left: 5px solid var(--gold); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 26px 22px;
+}
+.quote-banner .quote { font-size: 1.08rem; color: var(--red-dark); font-weight: 600; letter-spacing: 1px; }
+.quote-banner .author { margin-top: 8px; color: var(--ink-light); font-size: 0.9rem; }
+
+/* ---------- 密码史：垂直时间线 ---------- */
+.timeline { position: relative; padding-left: 34px; }
+/* 时间线主轴 */
+.timeline::before {
+  content: ""; position: absolute; left: 10px; top: 6px; bottom: 6px; width: 3px;
+  background: linear-gradient(180deg, var(--red), var(--gold));
+  border-radius: 2px;
+}
+.timeline-item { position: relative; margin-bottom: 40px; }
+/* 时间线节点圆点 */
+.timeline-item::before {
+  content: ""; position: absolute; left: -31px; top: 8px; width: 15px; height: 15px;
+  background: var(--paper); border: 4px solid var(--red); border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.35);
+}
+.timeline-card {
+  background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 24px; border-left: 4px solid var(--gold);
+}
+.timeline-card .era-tag {
+  display: inline-block; font-size: 0.8rem; color: #fff; background: var(--red);
+  border-radius: 20px; padding: 2px 14px; letter-spacing: 1px; margin-bottom: 8px;
+}
+.timeline-card h3 { color: var(--red-dark); font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 10px; }
+.timeline-card p { font-size: 0.95rem; margin-bottom: 16px; }
+
+/* 16:9 漫画占位图（内联 SVG 由 history.js 生成，样式仅做容器约束） */
+.comic-placeholder {
+  aspect-ratio: 16 / 9; width: 100%; border-radius: 8px; overflow: hidden;
+  border: 1px dashed var(--gold); background: #FBF6E9;
+}
+.comic-placeholder svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- 人物页：网格卡片 ---------- */
+.figures-grid {
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.figure-card {
+  background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow);
+  border-top: 4px solid var(--red); padding: 26px 22px; text-align: center;
+  transition: transform 0.2s;
+}
+.figure-card:hover { transform: translateY(-4px); }
+.figure-card img.avatar {
+  width: 128px; height: 128px; border-radius: 50%; margin: 0 auto 14px;
+  border: 4px solid var(--gold); box-shadow: 0 3px 10px rgba(62, 30, 20, 0.2);
+  object-fit: cover; background: var(--red);
+}
+.figure-card h3 { color: var(--red-dark); font-size: 1.25rem; letter-spacing: 3px; }
+.figure-card .years { color: var(--ink-light); font-size: 0.88rem; margin: 4px 0 14px; }
+.figure-card .field { text-align: left; margin-bottom: 12px; font-size: 0.9rem; }
+.figure-card .field h4 {
+  display: inline-block; font-size: 0.82rem; color: #fff; background: var(--gold);
+  border-radius: 4px; padding: 1px 10px; margin-bottom: 6px; letter-spacing: 2px;
+}
+.figure-card .field p { color: var(--ink); }
+.figure-card .ref-btn {
+  display: inline-block; margin-top: 8px; padding: 8px 22px; text-decoration: none;
+  background: var(--red); color: #fff; border-radius: 22px; font-size: 0.88rem;
+  letter-spacing: 1px; transition: background 0.2s;
+}
+.figure-card .ref-btn:hover { background: var(--red-dark); }
+
+/* ---------- 答题页 ---------- */
+.quiz-panel {
+  background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 28px; border-top: 4px solid var(--red);
+}
+.quiz-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.quiz-toolbar .progress-label { font-size: 0.9rem; color: var(--ink-light); }
+.progress-track {
+  height: 10px; background: #EDE4D2; border-radius: 6px; overflow: hidden; margin-bottom: 22px;
+}
+.progress-fill {
+  height: 100%; width: 0; border-radius: 6px;
+  background: linear-gradient(90deg, var(--red), var(--gold)); transition: width 0.3s;
+}
+.quiz-question { font-size: 1.12rem; font-weight: 600; color: var(--ink); margin-bottom: 18px; }
+.quiz-question .q-type {
+  display: inline-block; font-size: 0.78rem; color: #fff; background: var(--red);
+  border-radius: 4px; padding: 1px 10px; margin-right: 10px; vertical-align: 2px; letter-spacing: 2px;
+}
+.quiz-options { display: grid; gap: 12px; }
+.quiz-options button {
+  text-align: left; padding: 13px 16px; font-size: 0.98rem; cursor: pointer;
+  background: #FBF6E9; color: var(--ink); border: 2px solid #E3D5B8; border-radius: 8px;
+  transition: all 0.15s; font-family: inherit;
+}
+.quiz-options button:hover:not(:disabled) { border-color: var(--red); background: #FFF; }
+.quiz-options button:disabled { cursor: default; }
+/* 答题后：正确 / 错误 选项着色 */
+.quiz-options button.correct { background: #E5F2E6; border-color: var(--ok); color: var(--ok); font-weight: 700; }
+.quiz-options button.wrong { background: #FBE9E7; border-color: var(--err); color: var(--err); }
+.quiz-options button.chosen { outline: 2px solid var(--gold); }
+
+.explanation {
+  margin-top: 18px; padding: 14px 16px; border-radius: 8px; font-size: 0.93rem;
+  background: #FDF6E3; border-left: 4px solid var(--gold); display: none;
+}
+.explanation.show { display: block; }
+.explanation .verdict { font-weight: 700; margin-bottom: 4px; }
+.explanation .verdict.right { color: var(--ok); }
+.explanation .verdict.miss { color: var(--err); }
+
+.quiz-actions { margin-top: 22px; text-align: right; }
+.btn {
+  display: inline-block; border: none; cursor: pointer; text-decoration: none;
+  background: var(--red); color: #fff; font-size: 0.98rem; letter-spacing: 2px;
+  padding: 11px 30px; border-radius: 24px; font-family: inherit; transition: background 0.2s;
+}
+.btn:hover { background: var(--red-dark); }
+.btn:disabled { background: #C9BBA8; cursor: not-allowed; }
+.btn.ghost { background: transparent; color: var(--red); border: 2px solid var(--red); }
+.btn.ghost:hover { background: rgba(196, 26, 26, 0.08); }
+
+/* 成绩结算 */
+.quiz-result { text-align: center; padding: 20px 0; }
+.quiz-result .score { font-size: 2.4rem; color: var(--red-dark); font-weight: 700; }
+.quiz-result .score small { font-size: 1.1rem; color: var(--ink-light); }
+.quiz-result .remark { margin: 8px 0 20px; color: var(--ink-light); }
+.wrong-review { text-align: left; margin-top: 8px; }
+.wrong-review h4 { color: var(--red-dark); margin: 16px 0 10px; }
+.wrong-review .item {
+  background: #FBF6E9; border-left: 4px solid var(--err); border-radius: 6px;
+  padding: 12px 14px; margin-bottom: 12px; font-size: 0.92rem;
+}
+
+/* ---------- 留言板 ---------- */
+.guestbook-layout { display: grid; gap: 22px; grid-template-columns: 340px 1fr; align-items: start; }
+.gb-form-card, .gb-list-card {
+  background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px;
+}
+.gb-form-card h3, .gb-list-card h3 { color: var(--red-dark); letter-spacing: 2px; margin-bottom: 14px; }
+.gb-form-card label { display: block; font-size: 0.9rem; color: var(--ink-light); margin: 12px 0 6px; }
+.gb-form-card input, .gb-form-card textarea {
+  width: 100%; padding: 10px 12px; font-size: 0.95rem; font-family: inherit;
+  border: 2px solid #E3D5B8; border-radius: 8px; background: #FBF6E9; color: var(--ink);
+}
+.gb-form-card input:focus, .gb-form-card textarea:focus { outline: none; border-color: var(--red); }
+.gb-form-card textarea { min-height: 110px; resize: vertical; }
+.gb-form-card .btn { width: 100%; margin-top: 16px; }
+
+.gb-item {
+  background: #FBF6E9; border-left: 4px solid var(--gold); border-radius: 8px;
+  padding: 14px 16px; margin-bottom: 14px;
+}
+.gb-item .head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.gb-item .name { font-weight: 700; color: var(--red-dark); }
+.gb-item .time { font-size: 0.8rem; color: var(--ink-light); }
+.gb-item .content { margin-top: 6px; font-size: 0.95rem; white-space: pre-wrap; word-break: break-word; }
+.gb-item .del-btn {
+  border: none; background: none; color: var(--ink-light); cursor: pointer; font-size: 0.8rem;
+  text-decoration: underline; font-family: inherit;
+}
+.gb-item .del-btn:hover { color: var(--err); }
+.gb-empty { text-align: center; color: var(--ink-light); padding: 26px 0; font-size: 0.92rem; }
+
+/* ---------- 响应式适配 ---------- */
+@media (max-width: 768px) {
+  main { padding: 110px 14px 30px; }
+  .guestbook-layout { grid-template-columns: 1fr; }  /* 留言板改为上下布局 */
+  .nav-inner { justify-content: center; }
+  .main-nav a { padding: 10px 12px; font-size: 0.9rem; }
+  .quiz-panel { padding: 20px 16px; }
+  .hero { padding: 56px 18px 48px; }
+}

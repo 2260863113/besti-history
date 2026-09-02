@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- 答题页：17 道题，支持分步答题（默认）与全部题目两种模式 -->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>密码知识答题 | 永不消逝的电波——我国密码事业发展史</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="quiz">
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><span class="star">★</span>红星杯 · 密码史</a>
+      <nav class="main-nav">
+        <a href="index.html"     data-nav="home">首页</a>
+        <a href="history.html"   data-nav="history">密码史</a>
+        <a href="figures.html"   data-nav="figures">人物</a>
+        <a href="quiz.html"      data-nav="quiz">答题</a>
+        <a href="guestbook.html" data-nav="guestbook">留言</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="section-title" style="margin-top:0">密码知识答题</h1>
+
+    <div class="quiz-panel" id="quiz-panel">
+      <!-- 工具栏：进度提示 + 模式切换 -->
+      <div class="quiz-toolbar">
+        <span class="progress-label" id="progress-label"></span>
+        <span>
+          <button class="btn ghost" id="mode-step" style="padding:6px 16px;font-size:0.85rem">分步答题</button>
+          <button class="btn ghost" id="mode-all" style="padding:6px 16px;font-size:0.85rem">显示全部题目</button>
+        </span>
+      </div>
+
+      <!-- 进度条 -->
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+
+      <!-- 题目渲染区：quiz.js 动态填充 -->
+      <div id="quiz-body"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 我国密码史主题展示网站 · <span class="gold">“红星杯”项目</span></p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
